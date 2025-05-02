@@ -1,0 +1,60 @@
+<!-- filepath: c:\Users\PC\Desktop\JIREH\cart.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-container">
+      <img src="jireh-logo.png" alt="JIREH Logo" class="logo">
+      <h1>JIREH</h1>
+    </div>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="categories.html">Categories</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="cart-items">
+    <h2>Your Cart</h2>
+    <ul id="cart-list"></ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p>Email: <a href="mailto:sethgeofrey1@gmail.com">sethgeofrey1@gmail.com</a></p>
+      <p>Phone: <a href="tel:+25560394005">+255 603 940 05</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Retrieve the cart data from localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartList = document.getElementById("cart-list");
+
+    // Check if the cart is empty
+    if (cart.length === 0) {
+      const emptyMessage = document.createElement("p");
+      emptyMessage.textContent = "Your cart is empty.";
+      document.querySelector(".cart-items").appendChild(emptyMessage);
+    } else {
+      // Display each item in the cart
+      cart.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
